@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E.B. Apiaries | Pure Raw Honey</title>
+
+<style>
+:root { 
+    --bg: #FFF8E7;                  /* warm cream */
+    --card: rgba(255, 200, 80, 0.12); /* light honey glaze */
+    --text: #3B2A1A;           /* dark honey brown */
+    --accent: #E6A400;             /* raw honey gold */
+    --radius: 16px;
+}
+
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding-top: 96px;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10003;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 70px;
+    background: rgba(255, 248, 231, 0.75);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(230,164,0,0.25);
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: 'Orbitron', sans-serif;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    margin-left: 40px;
+    text-decoration: none;
+    color: var(--text);
+    opacity: 0.75;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.25s, text-shadow 0.25s;
+    font-family: 'Orbitron', sans-serif;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    left: 0;
+    bottom: -6px;
+    background-color: var(--accent);
+    transition: width 0.3s;
+}
+
+nav a:hover {
+    opacity: 1;
+    color: var(--accent);
+    text-shadow: 0 0 6px rgba(230,164,0,0.4);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a.active {
+    color: var(--accent);
+    text-shadow: 0 0 6px rgba(230,164,0,0.4);
+}
+
+nav a.active::after {
+    width: 100%;
+}
+
+/* Burger */
+#burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 10002;
+}
+
+#burger span {
+    height: 3px;
+    width: 28px;
+    background: var(--text);
+    margin-bottom: 5px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Burger animation */
+#burger.toggle span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+#burger.toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+#burger.toggle span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Blur background when nav active */
+body.nav-active > *:not(header):not(nav) {
+    filter: blur(6px);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Hero */
+/* Hero */
+.hero {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url('https://images.pexels.com/photos/32504762/pexels-photo-32504762.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
+    position: relative;
+}
+
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(255, 185, 50, 0.35);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 20px;
+}
+
+.hero h2 {
+    font-size: clamp(84px, 5vw, 48px);
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+}
+
+.hero p {
+    font-size: clamp(24px, 2.5vw, 20px);
+    color: #FFFFFF;
+    text-shadow: 2px 2px 6px rgba(0,0,0,1.0);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    margin-top: 50px;
+    padding: 16px 36px;
+    border-radius: var(--radius);
+    color: #3B2A1A; /* dark honey for contrast */
+    font-weight: 700;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.3s;
+    background: linear-gradient(135deg, #FFC107, #FFD700); /* golden honey */
+    border: none;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #FFD700, #FFC107);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+/* Sections */
+section {
+    padding: 100px 70px;
+    max-width: 1400px;
+    margin: auto;
+}
+
+h3 {
+    font-size: 36px;
+    margin-bottom: 60px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--accent);
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+    background: rgba(255, 240, 200, 0.7);
+    padding: 36px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(230,164,0,0.25);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px rgba(230,164,0,0.35);
+}
+
+.card h4 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: var(--accent);
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+}
+
+.card p {
+    color: var(--text);
+    opacity: 0.85;
+}
+
+/* Capabilities */
+.capabilities {
+    max-width: 700px;
+    margin: auto;
+    font-size: 20px;
+    line-height: 2em;
+    opacity: 0.85;
+    font-family: 'Roboto', sans-serif;
+}
+
+.capabilities li {
+    list-style: none;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+    margin-bottom: 16px;
+}
+
+/* Contact Form */
+form {
+    max-width: 600px;
+    margin: auto;
+    display: grid;
+    gap: 12px;
+}
+
+input, textarea {
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(230,164,0,0.15);
+    border-radius: var(--radius);
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: var(--text);
+    outline: none;
+    transition: 0.25s;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 8px rgba(230,164,0,0.3);
+}
+
+textarea {
+    height: 240px;
+    resize: none;
+    line-height: 1.4;
+    vertical-align: top;
+}
+
+button {
+    padding: 14px;
+    background: var(--accent);
+    color: var(--bg);
+    font-size: 18px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 0 8px rgba(230,164,0,0.3);
+    font-family: 'Roboto', sans-serif;
+}
+
+button:hover {
+    box-shadow: 0 0 14px rgba(230,164,0,0.5);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 50px 0;
+    opacity: 0.5;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Popup Styles */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 190, 80, 0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.popup .popup-content {
+    position: relative; /* make children absolute relative to this */
+    display: inline-block;
+}
+
+.popup img {
+    max-width: 800px;
+    max-height: 80vh;
+    border-radius: var(--radius);
+    display: block;
+}
+
+/* Fixed close button at top-left of popup */
+.popup .close {
+    position: absolute;
+    top: 110px;
+    right: 20px;  /* distance from left edge */
+    font-size: 35px;
+    color: #3B2A1A;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+    z-index: 10001;
+}
+
+/* Fixed arrows at left/right of viewport */
+.popup .arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 50px;
+    color: #3B2A1A;
+    cursor: pointer;
+    user-select: none;
+    font-weight: bold;
+    padding: 5px;
+    background: rgba(255, 240, 180, 0.4);
+    border-radius: 50%;
+    z-index: 10001;
+}
+
+.popup .arrow.left {
+    left: 20px;  /* distance from left edge */
+}
+
+.popup .arrow.right {
+    right: 20px; /* distance from right edge */
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    header {
+        padding: 20px 30px;
+    }
+    nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 250px;
+    background-color: rgba(0,0,0,0);
+    backdrop-filter: none;
+    display: flex;
+    flex-direction: column;
+    padding-top: 120px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 10001;
+}
+    nav.active {
+        transform: translateX(0);
+    }
+    nav a {
+        font-size: 22px;
+        margin: 20px 0;
+        color: var(--text);
+        opacity: 1;
+    }
+    #burger {
+        display: flex;
+    }
+    section {
+        padding: 70px 20px;
+    }
+    .grid {
+        gap: 20px;
+    }
+
+    /* Popup responsive adjustments */
+    .popup img {
+        max-width: 95vw;
+        max-height: 70vh;
+    }
+    .popup .arrow.left {
+        left: 10px;
+        font-size: 40px;
+    }
+    .popup .arrow.right {
+        right: 10px;
+        font-size: 40px;
+    }
+    .popup .close {
+        position: absolute;
+        top: 15%;
+        right: 5%;          /* optional: adjust from right edge */
+        background-color: #fff;   /* solid white background */
+        color: #3B2A1A;           /* keep your X color */
+        padding: 6px 12px;         /* some padding around the X */
+        border-radius: 6px;        /* optional: rounded corners */
+        font-size: 28px;           /* slightly smaller for mobile */
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* subtle shadow for contrast */
+    }
+}
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<header>
+    <h1>E.B. Apiaries</h1>
+    <nav id="nav-links">
+        <a href="#services">Offerings</a>
+        <a href="#quality">From Hive to Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>PURE RAW HONEY</h2>
+        <p>From our hives to your home — sustainably harvested, unfiltered, and delicious.</p>
+        <a class="btn" href="#contact">Contact Us</a>
+    </div>
+</section>
+
+<section id="services">
+    <h3>What We Offer</h3>
+    <div class="grid">
+        <div class="card" data-category="raw-honey">
+            <h4>Raw Honey</h4>
+            <p>Pure, unfiltered honey straight from our hives.</p>
+        </div>
+        <div class="card" data-category="local-queens">
+            <h4>Local Queens</h4>
+            <p>Locally raised northern queens, pick-up or delivery.</p>
+        </div>
+        <div class="card" data-category="bee-removals">
+            <h4>Bee Removals</h4>
+            <p>E.B. Apiaries has been rescuing bees since 2012.</p>
+        </div>
+        <div class="card" data-category="education">
+            <h4>Mentorship Program</h4>
+            <p>Helping educate the next generations of beekeepers.</p>
+        </div>
+    </div>
+</section>
+
+<section id="quality">
+    <h3>Why Our Honey Stands Out</h3>
+    <p style="max-width:900px;margin:0 auto 50px;text-align:center;font-size:20px;opacity:0.85;">
+        Honey from <strong>E.B. Apiaries</strong> isn’t just harvested — it’s nurtured. Every jar reflects a commitment to sustainability,
+    ethical beekeeping, and the natural flavors of the region.
+    </p>
+
+    <ul class="capabilities" style="max-width:800px;margin:auto;font-size:18px;line-height:2em;">
+        <li><strong>Ethical Beekeeping:</strong> Our bees thrive under mindful stewardship, with their health and well-being at the heart of everything we do.</li>
+        <li><strong>Raw & Unprocessed:</strong> Honey is kept as close to nature as possible — unfiltered, unheated, and pure.</li>
+        <li><strong>Sustainably Harvested:</strong> We only collect surplus honey, ensuring our bees always have enough.</li>
+        <li><strong>Seasonal & Local Flavors:</strong> Each batch captures the blooms of the season and region.</li>
+        <li><strong>Educational Outreach:</strong> Through workshops and mentorships, we share knowledge to protect bees and inspire new beekeepers.</li>
+    </ul>
+</section>
+
+
+<section id="about">
+    <h3>What Makes Us Buzz</h3>
+    <p style="max-width:900px;margin:auto;font-size:20px;opacity:0.85;">
+        At <strong>E.B. Apiaries</strong>, we are passionate about preserving the natural benefits of honey. Our mission is to provide pure, raw honey harvested sustainably from our hives, delivering a taste of nature’s bounty while supporting ethical beekeeping.
+    </p>
+</section>
+
+<section id="contact">
+    <h3>Contact Us</h3>
+    <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <textarea placeholder="Message" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+
+<footer>
+    © 2026 E.B. Apiaries | Pure Raw Honey
+</footer>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+    <span class="close" id="close">&times;</span> <!-- OUTSIDE popup-content -->
+    <div class="popup-content">
+        <span class="arrow left" id="prev">&#10094;</span>
+        <img id="popup-img" src="">
+        <span class="arrow right" id="next">&#10095;</span>
+    </div>
+</div>
+
+
+
+<script>
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) { 
+            e.preventDefault();
+            const headerOffset = 96; 
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+    });
+});
+
+// Active nav
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (window.pageYOffset >= sectionTop) {
+            current = section.getAttribute('id');
+        }
+    });
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').substring(1) === current) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Burger menu toggle with blur and X animation
+const burger = document.getElementById('burger');
+const nav = document.getElementById('nav-links');
+burger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    burger.classList.toggle('toggle');
+    document.body.classList.toggle('nav-active');
+});
+
+// Close mobile menu when link clicked
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        burger.classList.remove('toggle');
+        document.body.classList.remove('nav-active');
+    });
+});
+
+// Popup slideshow with updated offerings
+const serviceImages = {
+  "raw-honey": [
+  "https://cdn11.bigcommerce.com/s-q643pzcy1y/images/stencil/1500x1500/products/1063/2305/honey_comb-web_1__64403.1748887493.jpg?c=1",
+  "https://bethsbees.com/wp-content/uploads/2022/08/honey.comb_.pint_.ss_.jpg",
+  "https://www.foraged.com/_next/image?q=50&url=https%3A%2F%2Fforaged.nyc3.cdn.digitaloceanspaces.com%2FIMG_6133-1731777502408.jpeg&w=2048",
+  "https://www.saratogateaandhoney.com/cdn/shop/products/HoneyCombJar-1.jpg?v=1638897270&width=866"
+  ],
+  "local-queens": [
+    "https://upload.wikimedia.org/wikipedia/commons/a/ac/Apis_mellifera_scutellata_1355021.jpg",
+    "https://www.warrenphotographic.co.uk/photgraphy/bigs/05496-honey-bee-queen-surrounded-by-workers.jpg",
+    "https://previews.123rf.com/images/daviden/daviden1708/daviden170800003/83809479-queen-bee-is-always-surrounded-by-the-workers-bees-%E2%80%93-their-servant.jpg"
+  ],
+  "bee-removals": [
+  "https://upload.wikimedia.org/wikipedia/commons/b/b6/MelbourneSwarm.JPG",
+  "https://cdn.prod.website-files.com/6406337c87bb290493ddf271/649c723ef7ae1305516d7b0e_image%20%282%29.png",
+  "https://hgic.clemson.edu/wp-content/uploads/2020/03/a-swarm-of-honey-bees-clustered-on-a-sweetgum-tree-e1585326374241.jpeg",
+  "https://cdn.shopify.com/s/files/1/0262/6374/8713/files/Bee-Swarm-768x768_2000x2000_7908848b-0725-4310-af60-6c983de15bb6_1000x.png?v=1734986763"
+  ],
+  "education": [
+    "https://www.oakleyfamilyapiaries.com/wp-content/uploads/2018/09/beekeeping-class-outdoors.jpg",
+    "https://nodglobal.com/wp-content/uploads/2024/03/NOD-Education-Centre_BeginnerBee-Lucy-e1710530250499.jpg",
+    "https://hoolafarms.org/wp-content/uploads/2022/04/IMG_5484-1024x768.png",
+    "https://tvbees.org/cdn/shop/files/IMG_2930_5000x.jpg?v=1738796481",
+  ]
+};
+
+const cards = document.querySelectorAll('.card');
+const popup = document.getElementById('popup');
+const popupImg = document.getElementById('popup-img');
+const close = document.getElementById('close');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+
+let currentImages = [];
+let currentIndex = 0;
+
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        const category = card.dataset.category;
+        currentImages = serviceImages[category] || [];
+        currentIndex = 0;
+        popupImg.src = currentImages[currentIndex];
+        popup.style.display = 'flex';
+    });
+});
+
+close.addEventListener('click', () => popup.style.display = 'none');
+
+prev.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    popupImg.src = currentImages[currentIndex];
+});
+
+next.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    popupImg.src = currentImages[currentIndex];
+});
+</script>
+
+</body>
+</html>
