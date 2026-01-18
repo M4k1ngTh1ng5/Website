@@ -539,23 +539,19 @@ footer {
 
 <section id="contact">
     <h3>Contact Us</h3>
-    <form id="contact-form" action="https://formsubmit.co/liberi9836@naprb.com" method="POST">
-        <!-- Email table format -->
-        <input type="hidden" name="_template" value="table">
-        <!-- Disable FormSubmit captcha -->
-        <input type="hidden" name="_captcha" value="false">
-        <!-- Optional: email subject -->
-        <input type="hidden" name="_subject" value="New Contact Form Submission">
-        <!-- Hidden field to track source -->
-        <input type="hidden" name="Source" value="E.B. Apiaries Website Contact Form">
+    <form id="contact-form" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+    <!-- Make email appear as a table -->
+    <input type="hidden" name="_template" value="table"> 
+    <!-- Disable FormSubmit captcha if you want -->
+    <input type="hidden" name="_captcha" value="false">
+    <!-- Optional: indicate the source of the form -->
+    <input type="hidden" name="Source" value="Website Contact Form">
 
-        <!-- User-visible fields -->
-        <input type="text" name="Name" placeholder="Your Name" required>
-        <input type="email" name="Email" placeholder="Email Address" required>
-        <textarea name="Message" placeholder="Your Message" required></textarea>
-
-        <button type="submit">Send Message</button>
-    </form>
+    <input type="text" name="Name" placeholder="Your Name" required>
+    <input type="email" name="Email" placeholder="Email Address" required>
+    <textarea name="Message" placeholder="Message" required></textarea>
+    <button type="submit">Submit</button>
+</form>
 </section>
 
 
@@ -728,6 +724,7 @@ formPopup.addEventListener('click', (e) => {
 
 </body>
 </html>
+
 
 
 
