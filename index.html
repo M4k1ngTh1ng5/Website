@@ -539,7 +539,7 @@ footer {
 
 <section id="contact">
     <h3>Contact Us</h3>
-    <form id="contact-form" action="https://formsubmit.co/hofoxeg137@naprb.com" method="POST">
+    <form id="contact-form" action="https://formsubmit.co/liberi9836@naprb.com" method="POST">
         <!-- Email table format -->
         <input type="hidden" name="_template" value="table">
         <!-- Disable FormSubmit captcha -->
@@ -556,6 +556,7 @@ footer {
 
         <button type="submit">Send Message</button>
     </form>
+</section>
 </section>
 
 
@@ -698,27 +699,44 @@ next.addEventListener('click', () => {
 });
 </script>
 <script>
-// Contact Form with FormSubmit and Success Popup
+// FormSubmit with popup
 const contactForm = document.getElementById('contact-form');
 const formPopup = document.getElementById('form-popup');
 const formPopupClose = document.getElementById('form-popup-close');
 
-contactForm.addEventListener('submit', function() {
-    // Show the success popup immediately
-    formPopup.style.display = 'flex';
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent default submission to FormSubmit page
 
-    // Reset the form fields
-    contactForm.reset();
+    // Collect form data
+    const formData = new FormData(contactForm);
 
-    // The form will submit normally to FormSubmit, so emails will go through
+    // Send data to FormSubmit
+    fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+        if (response.ok) {
+            // Show success popup
+            formPopup.style.display = 'flex';
+            contactForm.reset();
+        } else {
+            alert('Oops! There was a problem submitting your form.');
+        }
+    })
+    .catch(error => {
+        alert('Oops! There was a problem submitting your form.');
+        console.error(error);
+    });
 });
 
-// Close popup when the "×" is clicked
+// Close popup
 formPopupClose.addEventListener('click', () => {
     formPopup.style.display = 'none';
 });
 
-// Close popup when clicking outside the popup content
+// Close popup on click outside content
 formPopup.addEventListener('click', (e) => {
     if (e.target === formPopup) {
         formPopup.style.display = 'none';
@@ -726,12 +744,8 @@ formPopup.addEventListener('click', (e) => {
 });
 </script>
 
-
 </body>
 </html>
-
-
-
 
 
 
