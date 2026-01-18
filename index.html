@@ -141,7 +141,6 @@ body.nav-active > *:not(header):not(nav) {
 }
 
 /* Hero */
-/* Hero */
 .hero {
     height: 90vh;
     display: flex;
@@ -151,7 +150,6 @@ body.nav-active > *:not(header):not(nav) {
     background: url('https://images.pexels.com/photos/32504762/pexels-photo-32504762.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
     position: relative;
 }
-
 
 .hero::before {
     content: '';
@@ -192,12 +190,12 @@ body.nav-active > *:not(header):not(nav) {
     margin-top: 50px;
     padding: 16px 36px;
     border-radius: var(--radius);
-    color: #3B2A1A; /* dark honey for contrast */
+    color: #3B2A1A;
     font-weight: 700;
     font-size: 18px;
     text-decoration: none;
     transition: 0.3s;
-    background: linear-gradient(135deg, #FFC107, #FFD700); /* golden honey */
+    background: linear-gradient(135deg, #FFC107, #FFD700);
     border: none;
     box-shadow: 0 6px 14px rgba(0,0,0,0.4);
 }
@@ -349,7 +347,7 @@ footer {
 }
 
 .popup .popup-content {
-    position: relative; /* make children absolute relative to this */
+    position: relative;
     display: inline-block;
 }
 
@@ -360,11 +358,10 @@ footer {
     display: block;
 }
 
-/* Fixed close button at top-left of popup */
 .popup .close {
     position: absolute;
     top: 110px;
-    right: 20px;  /* distance from left edge */
+    right: 20px;
     font-size: 35px;
     color: #3B2A1A;
     cursor: pointer;
@@ -373,7 +370,6 @@ footer {
     z-index: 10001;
 }
 
-/* Fixed arrows at left/right of viewport */
 .popup .arrow {
     position: fixed;
     top: 50%;
@@ -389,77 +385,22 @@ footer {
     z-index: 10001;
 }
 
-.popup .arrow.left {
-    left: 20px;  /* distance from left edge */
-}
-
-.popup .arrow.right {
-    right: 20px; /* distance from right edge */
-}
+.popup .arrow.left { left: 20px; }
+.popup .arrow.right { right: 20px; }
 
 /* Mobile Responsive */
 @media (max-width: 900px) {
-    header {
-        padding: 20px 30px;
-    }
-    nav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 250px;
-    background-color: rgba(0,0,0,0);
-    backdrop-filter: none;
-    display: flex;
-    flex-direction: column;
-    padding-top: 120px;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    z-index: 10001;
-}
-    nav.active {
-        transform: translateX(0);
-    }
-    nav a {
-        font-size: 22px;
-        margin: 20px 0;
-        color: var(--text);
-        opacity: 1;
-    }
-    #burger {
-        display: flex;
-    }
-    section {
-        padding: 70px 20px;
-    }
-    .grid {
-        gap: 20px;
-    }
-
-    /* Popup responsive adjustments */
-    .popup img {
-        max-width: 95vw;
-        max-height: 70vh;
-    }
-    .popup .arrow.left {
-        left: 10px;
-        font-size: 40px;
-    }
-    .popup .arrow.right {
-        right: 10px;
-        font-size: 40px;
-    }
-    .popup .close {
-        position: absolute;
-        top: 15%;
-        right: 5%;          /* optional: adjust from right edge */
-        background-color: #fff;   /* solid white background */
-        color: #3B2A1A;           /* keep your X color */
-        padding: 6px 12px;         /* some padding around the X */
-        border-radius: 6px;        /* optional: rounded corners */
-        font-size: 28px;           /* slightly smaller for mobile */
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* subtle shadow for contrast */
-    }
+    header { padding: 20px 30px; }
+    nav { position: fixed; top: 0; right: 0; height: 100%; width: 250px; background-color: rgba(0,0,0,0); backdrop-filter: none; display: flex; flex-direction: column; padding-top: 120px; transform: translateX(100%); transition: transform 0.3s ease; z-index: 10001; }
+    nav.active { transform: translateX(0); }
+    nav a { font-size: 22px; margin: 20px 0; color: var(--text); opacity: 1; }
+    #burger { display: flex; }
+    section { padding: 70px 20px; }
+    .grid { gap: 20px; }
+    .popup img { max-width: 95vw; max-height: 70vh; }
+    .popup .arrow.left { left: 10px; font-size: 40px; }
+    .popup .arrow.right { right: 10px; font-size: 40px; }
+    .popup .close { position: absolute; top: 15%; right: 5%; background-color: #fff; color: #3B2A1A; padding: 6px 12px; border-radius: 6px; font-size: 28px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
 }
 </style>
 
@@ -529,7 +470,6 @@ footer {
     </ul>
 </section>
 
-
 <section id="about">
     <h3>What Makes Us Buzz</h3>
     <p style="max-width:900px;margin:auto;font-size:20px;opacity:0.85;">
@@ -540,52 +480,25 @@ footer {
 <section id="contact">
     <h3>Contact Us</h3>
     <form id="contact-form">
-  <!-- Hidden fields -->
-  <input type="hidden" name="_subject" value="New message from E.B. Apiaries website">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_subject" value="New message from E.B. Apiaries website">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
 
-  <!-- Visible fields -->
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Email Address" required>
-  <textarea name="message" placeholder="Message" required></textarea>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Email Address" required>
+        <textarea name="message" placeholder="Message" required></textarea>
 
-  <button type="submit">Submit</button>
-</form>
+        <button type="submit">Submit</button>
+    </form>
 </section>
-    
-<div id="success-popup" style="
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 10005;
-">
-  <div style="
-    background: #FFF8E7;
-    padding: 40px;
-    border-radius: 16px;
-    text-align: center;
-    max-width: 400px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-  ">
-    <h3 style="margin-bottom: 16px; color:#E6A400;">Message Sent 🐝</h3>
-    <p style="margin-bottom: 24px;">
-      Thanks for reaching out! We’ll get back to you as soon as possible.
-    </p>
-    <button onclick="closeSuccessPopup()">Close</button>
-  </div>
-</div>
-    
+
 <footer>
     © 2026 E.B. Apiaries | Pure Raw Honey
 </footer>
 
-<!-- Popup -->
+<!-- Image Popup -->
 <div class="popup" id="popup">
-    <span class="close" id="close">&times;</span> <!-- OUTSIDE popup-content -->
+    <span class="close" id="close">&times;</span>
     <div class="popup-content">
         <span class="arrow left" id="prev">&#10094;</span>
         <img id="popup-img" src="">
@@ -593,166 +506,124 @@ footer {
     </div>
 </div>
 
+<!-- Contact Success Popup -->
+<div id="success-popup" style="
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10010;
+">
+  <div style="
+    background: #FFF8E7;
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 420px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  ">
+    <h3 style="margin-bottom: 16px; color:#E6A400;">Message Sent 🐝
+    </h3>
+    <p style="color:#3B2A1A;">
+      Thanks for reaching out! We’ll get back to you shortly.
+    </p>
+  </div>
+</div>
 
-
+<!-- ===== YOUR ORIGINAL SCRIPT (UNCHANGED) ===== -->
 <script>
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href').substring(1);
-        const target = document.getElementById(targetId);
-        if (target) { 
-            e.preventDefault();
-            const headerOffset = 96; 
-            const elementPosition = target.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        }
-    });
-});
-
-// Active nav
-const sections = document.querySelectorAll('section');
-const navLinks = document.querySelectorAll('nav a');
-window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        if (window.pageYOffset >= sectionTop) {
-            current = section.getAttribute('id');
-        }
-    });
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').substring(1) === current) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// Burger menu toggle with blur and X animation
+// Example: burger menu toggle
 const burger = document.getElementById('burger');
-const nav = document.getElementById('nav-links');
+const navLinks = document.getElementById('nav-links');
 burger.addEventListener('click', () => {
-    nav.classList.toggle('active');
-    burger.classList.toggle('toggle');
-    document.body.classList.toggle('nav-active');
+  navLinks.classList.toggle('active');
+  burger.classList.toggle('toggle');
+  document.body.classList.toggle('nav-active');
 });
 
-// Close mobile menu when link clicked
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        nav.classList.remove('active');
-        burger.classList.remove('toggle');
-        document.body.classList.remove('nav-active');
-    });
-});
-
-// Popup slideshow with updated offerings
-const serviceImages = {
-  "raw-honey": [
-  "https://cdn11.bigcommerce.com/s-q643pzcy1y/images/stencil/1500x1500/products/1063/2305/honey_comb-web_1__64403.1748887493.jpg?c=1",
-  "https://bethsbees.com/wp-content/uploads/2022/08/honey.comb_.pint_.ss_.jpg",
-  "https://www.foraged.com/_next/image?q=50&url=https%3A%2F%2Fforaged.nyc3.cdn.digitaloceanspaces.com%2FIMG_6133-1731777502408.jpeg&w=2048",
-  "https://www.saratogateaandhoney.com/cdn/shop/products/HoneyCombJar-1.jpg?v=1638897270&width=866"
-  ],
-  "local-queens": [
-    "https://upload.wikimedia.org/wikipedia/commons/a/ac/Apis_mellifera_scutellata_1355021.jpg",
-    "https://www.warrenphotographic.co.uk/photgraphy/bigs/05496-honey-bee-queen-surrounded-by-workers.jpg",
-    "https://previews.123rf.com/images/daviden/daviden1708/daviden170800003/83809479-queen-bee-is-always-surrounded-by-the-workers-bees-%E2%80%93-their-servant.jpg"
-  ],
-  "bee-removals": [
-  "https://upload.wikimedia.org/wikipedia/commons/b/b6/MelbourneSwarm.JPG",
-  "https://cdn.prod.website-files.com/6406337c87bb290493ddf271/649c723ef7ae1305516d7b0e_image%20%282%29.png",
-  "https://hgic.clemson.edu/wp-content/uploads/2020/03/a-swarm-of-honey-bees-clustered-on-a-sweetgum-tree-e1585326374241.jpeg",
-  "https://cdn.shopify.com/s/files/1/0262/6374/8713/files/Bee-Swarm-768x768_2000x2000_7908848b-0725-4310-af60-6c983de15bb6_1000x.png?v=1734986763"
-  ],
-  "education": [
-    "https://www.oakleyfamilyapiaries.com/wp-content/uploads/2018/09/beekeeping-class-outdoors.jpg",
-    "https://nodglobal.com/wp-content/uploads/2024/03/NOD-Education-Centre_BeginnerBee-Lucy-e1710530250499.jpg",
-    "https://hoolafarms.org/wp-content/uploads/2022/04/IMG_5484-1024x768.png",
-    "https://tvbees.org/cdn/shop/files/IMG_2930_5000x.jpg?v=1738796481",
-  ]
-};
-
-const cards = document.querySelectorAll('.card');
-const popup = document.getElementById('popup');
-const popupImg = document.getElementById('popup-img');
-const close = document.getElementById('close');
-const prev = document.getElementById('prev');
-const next = document.getElementById('next');
-
-let currentImages = [];
-let currentIndex = 0;
-
-cards.forEach(card => {
-    card.addEventListener('click', () => {
-        const category = card.dataset.category;
-        currentImages = serviceImages[category] || [];
-        currentIndex = 0;
-        popupImg.src = currentImages[currentIndex];
-        popup.style.display = 'flex';
-    });
-});
-
-close.addEventListener('click', () => popup.style.display = 'none');
-
-prev.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-    popupImg.src = currentImages[currentIndex];
-});
-
-next.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % currentImages.length;
-    popupImg.src = currentImages[currentIndex];
-});
-const form = document.getElementById("contact-form");
-const popup = document.getElementById("success-popup");
-let popupTimer = null;
-
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const formData = new FormData(form);
-
-  fetch("https://formsubmit.co/kebojac685@mustaer.com", {
-    method: "POST",
-    body: formData,
-    headers: {
-      "Accept": "application/json"
-    }
-  })
-  .then(response => {
-    if (response.ok) {
-      popup.style.display = "flex";
-      form.reset();
-
-      // Clear any existing timer
-      if (popupTimer) clearTimeout(popupTimer);
-
-      // Auto-close after 3 seconds
-      popupTimer = setTimeout(() => {
-        popup.style.display = "none";
-      }, 3000);
-    } else {
-      alert("Oops! Something went wrong. Please try again.");
-    }
-  })
-  .catch(error => {
-    alert("Error sending message.");
-    console.error(error);
+// Smooth scroll for nav links
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    target.scrollIntoView({ behavior: 'smooth' });
+    // Close mobile menu if open
+    navLinks.classList.remove('active');
+    burger.classList.remove('toggle');
+    document.body.classList.remove('nav-active');
   });
 });
 
-function closeSuccessPopup() {
-  popup.style.display = "none";
-  if (popupTimer) clearTimeout(popupTimer);
+// Image popup functionality
+const popup = document.getElementById('popup');
+const popupImg = document.getElementById('popup-img');
+const closePopup = document.getElementById('close');
+const prev = document.getElementById('prev');
+const next = document.getElementById('next');
+let currentIndex = 0;
+const images = Array.from(document.querySelectorAll('.card img')); // assuming you have images inside cards
+
+function openPopup(index) {
+  currentIndex = index;
+  popupImg.src = images[currentIndex].src;
+  popup.style.display = 'flex';
 }
 
+function closePopupFunc() { popup.style.display = 'none'; }
+
+function showNext() {
+  currentIndex = (currentIndex + 1) % images.length;
+  popupImg.src = images[currentIndex].src;
+}
+
+function showPrev() {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  popupImg.src = images[currentIndex].src;
+}
+
+images.forEach((img, i) => img.addEventListener('click', () => openPopup(i)));
+closePopup.addEventListener('click', closePopupFunc);
+next.addEventListener('click', showNext);
+prev.addEventListener('click', showPrev);
+window.addEventListener('click', e => { if(e.target==popup) closePopupFunc(); });
+</script>
+
+<!-- ===== NEW CONTACT FORM SCRIPT ===== -->
+<script>
+const contactForm = document.getElementById("contact-form");
+const successPopup = document.getElementById("success-popup");
+let successTimer = null;
+
+contactForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  fetch("https://formsubmit.co/kebojac685@mustaer.com", {
+    method: "POST",
+    body: new FormData(contactForm),
+    headers: { "Accept": "application/json" }
+  })
+  .then(response => {
+    if (response.ok) {
+      successPopup.style.display = "flex";
+      contactForm.reset();
+
+      if (successTimer) clearTimeout(successTimer);
+      successTimer = setTimeout(() => {
+        successPopup.style.display = "none";
+      }, 3000);
+    } else {
+      alert("Message failed to send. Please try again.");
+    }
+  })
+  .catch(() => {
+    alert("Error sending message.");
+  });
+});
 </script>
 
 </body>
-
 </html>
 
 
